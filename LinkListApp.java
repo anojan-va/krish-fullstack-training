@@ -3,25 +3,20 @@ import java.util.*;
 class Link
 {
 	int iData;
-	double dData;
+	
 	Link next;
 	Link prv;
 	
-	Link(int id,double dd)
+	Link(int id)
 	{
 		iData =id;
-		dData=dd;
+		
 		
 	}
 	void displayLink()
 	{
-		System.out.println("["+iData+","+dData+"]");
+		System.out.println("["+iData+"]");
 	}
-	
-	
-	
-	
-	
 	
 }
 
@@ -29,17 +24,17 @@ class LinkList
 {
 	Link first;
 	
-	ArrayList<Link> link1 = new ArrayList<>();
-	ArrayList<Link> link2 = new ArrayList<>();
+	ArrayList<Integer> link1 = new ArrayList<>();
+	ArrayList<Integer> link2 = new ArrayList<>();
 	
 	LinkList()
 	{
 		first=null;
 	}
-	void insertFirst(int id,double dd)
+	void insertFirst(int id)
 	{
-		Link newLink = new Link(id,dd);
-		link1.add(newLink);
+		Link newLink = new Link(id);
+		link1.add(newLink.iData);
 		newLink.next=first;
 		first=newLink;
 	}
@@ -50,27 +45,22 @@ class LinkList
 		Link current = first; 
 		while(current!=null)
 		{
+			link2.add(current.iData);
 			current.displayLink();
 			current=current.next;
 		}
 		System.out.println("");
 		
 	}
-	void displayReverseList()
+	
+	void check()
 	{
-		for(Link li:link1)
-		{
-			link2.add(li);
-		}
-		
-		for(Link li2:link2)
-		{
-			li2.displayLink();
-		}
-		
-		
+		System.out.println("is the Linklist Palindrome?");
+		System.out.println(link1.equals(link2));
+	
 		
 	}
+
 	
 }
 	
@@ -79,14 +69,16 @@ class LinkList
 	public static void main(String [] args)
 	{
 		LinkList theList= new LinkList();
-		theList.insertFirst(22,2.99);
-		theList.insertFirst(33,3.99);
-		theList.insertFirst(44,4.99);
-		theList.insertFirst(55,5.99);
+		theList.insertFirst(22);
+		theList.insertFirst(21);
+		theList.insertFirst(30);
+		theList.insertFirst(21);
+		theList.insertFirst(22);
 		
-		//theList.displayList();
-		theList.displayReverseList();
 		
+		theList.displayList();
+		theList.check();
+
 	}
 }
 
